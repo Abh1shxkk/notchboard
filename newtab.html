@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Tab</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Soft colour fields behind the glass (solid shapes, blurred) -->
+  <div class="backdrop" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
+  <!-- SVG filters: gooey merge + squiggle frames -->
+  <svg class="defs" aria-hidden="true">
+    <defs>
+      <filter id="sq0"><feTurbulence baseFrequency=".02" numOctaves="3" seed="0" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+      <filter id="sq1"><feTurbulence baseFrequency=".02" numOctaves="3" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+      <filter id="sq2"><feTurbulence baseFrequency=".02" numOctaves="3" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+      <filter id="sq3"><feTurbulence baseFrequency=".02" numOctaves="3" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+      <filter id="sq4"><feTurbulence baseFrequency=".02" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+    </defs>
+  </svg>
+
+  <div class="app">
+    <!-- ============ Top bar ============ -->
+    <header class="bar">
+      <div class="bar-left"></div>
+
+      <div class="notch-wrap">
+        <div class="notch" id="notch" data-open="false">
+          <button class="notch-pill" id="notchPill" aria-expanded="false" aria-controls="notchBody">
+            <span class="notch-dot"></span>
+            <span class="notch-label" id="notchLabel">Daily brief</span>
+            <span class="notch-faces" id="notchFaces"></span>
+            <span class="notch-count" id="notchCount">0</span>
+          </button>
+          <div class="notch-body" id="notchBody">
+            <div class="notch-inner">
+              <div class="notch-head"><span id="notchKicker"></span><span id="notchStep"></span></div>
+              <h3 id="notchTitle"></h3>
+              <p id="notchText"></p>
+              <div class="notch-meta" id="notchMeta"></div>
+              <div class="notch-actions">
+                <button class="nb ghost fx" id="notchNo"></button>
+                <button class="nb solid fx" id="notchYes"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar-right">
+        <button class="kbar fx" id="paletteBtn"><span>Jump to anything</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+        <button class="icon-btn fx" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ Board ============ -->
+    <main class="board">
+      <!-- Overview -->
+      <section class="card" data-card="hero">
+        <div class="hero-b">
+          <div class="hero-top">
+            <div>
+              <p class="eyebrow" id="heroDate"></p>
+              <h1><span id="greeting">Hello</span>, <span id="name" class="name">there</span></h1>
+            </div>
+            <div class="quick">
+              <a class="qa fx" href="https://mail.google.com"><img data-fav="https://mail.google.com" alt="">Gmail</a>
+              <a class="qa fx" href="https://drive.google.com"><img data-fav="https://drive.google.com" alt="">Drive</a>
+              <a class="qa fx" href="https://calendar.google.com"><img data-fav="https://calendar.google.com" alt="">Calendar</a>
+            </div>
+          </div>
+          <div class="summary" id="summary"></div>
+          <div class="search" id="gooey">
+            <form class="search-form" id="searchForm">
+              <svg class="s-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m21 21-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/></svg>
+              <input id="q" autocomplete="off" spellcheck="false" placeholder="Search the web, your tools, tabs and history" aria-label="Search">
+              <kbd>/</kbd>
+              <button type="submit" class="s-go" aria-label="Search">
+                <span class="s-go-txt">Search</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </button>
+            </form>
+            <ul class="results" id="heroResults" role="listbox"></ul>
+          </div>
+          <div class="resume"><span class="resume-l">Resume</span><div class="resume-list" id="resume"></div></div>
+        </div>
+      </section>
+
+      <!-- 01 Focus (orange block) -->
+      <section class="card" data-card="focus">
+        <header class="card-h"><span class="idx">01</span><h2>Focus</h2><span class="meta" id="focusToday">0 min today</span></header>
+        <div class="card-b focus-b">
+          <div class="ring-wrap">
+            <svg class="ring" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" class="ring-bg"/>
+              <circle cx="60" cy="60" r="52" class="ring-fg" id="ringFg"/>
+            </svg>
+            <div class="ring-text"><span id="focusTime">25:00</span><small id="focusState">Ready</small></div>
+          </div>
+          <div class="focus-ctl">
+            <div class="seg" id="focusPresets">
+              <button class="active" data-m="25">25</button><button data-m="50">50</button><button data-m="90">90</button><button data-m="5">05</button>
+            </div>
+            <div class="focus-btns">
+              <button class="btn primary fx" id="focusStart">Start</button>
+              <button class="btn fx" id="focusReset">Reset</button>
+            </div>
+            <span class="focus-note" id="focusNote">Notifies you when done, even if this tab is closed.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 Time (ink block) -->
+      <section class="card" data-card="time">
+        <header class="card-h"><span class="idx">02</span><h2>Time</h2><span class="meta" id="tzName"></span></header>
+        <div class="card-b time-b">
+          <div class="big"><span id="tHM">00:00</span><span class="sec" id="tS">00</span><span class="ampm" id="tAP"></span></div>
+          <div class="tdate" id="tDate"></div>
+          <div class="dayprog"><span id="dayPct">0%</span><div class="track"><b id="dayBar"></b><i style="left:37.5%" title="09:00"></i><i style="left:75%" title="18:00"></i></div><span id="dayLeft"></span></div>
+          <ul class="zones" id="zones"></ul>
+        </div>
+      </section>
+
+      <!-- 03 Tabs (open / closed) -->
+      <section class="card" data-card="tabs" data-view="open">
+        <header class="card-h"><span class="idx">03</span><h2>Tabs</h2>
+          <span class="tools-r">
+            <button class="btn sm fx" id="closeDupesBtn" hidden>Close dupes</button>
+            <span class="seg" id="tabsSeg"><button class="active" data-v="open" id="segOpen">Open</button><button data-v="closed">Closed</button></span>
+          </span>
+          <button class="exp" aria-label="Expand"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        </header>
+        <div class="card-b flush">
+          <ul class="list" id="tabsList"></ul>
+          <ul class="list" id="closed"></ul>
+        </div>
+      </section>
+
+      <!-- 04 Today (sage) -->
+      <section class="card" data-card="today">
+        <header class="card-h"><span class="idx">04</span><h2>Today</h2><span class="meta" id="todayMeta"></span></header>
+        <div class="card-b today-b">
+          <div class="kpi"><b id="kVisits">0</b><small>Pages</small></div>
+          <div class="kpi"><b id="kSites">0</b><small>Sites</small></div>
+          <div class="kpi"><b id="kTabs">0</b><small>Tabs open</small></div>
+          <div class="kpi"><b id="kDone">0</b><small>Tasks done</small></div>
+          <div class="spark" id="spark" title="Pages by hour"></div>
+        </div>
+      </section>
+
+      <!-- 05 Most used (lavender) -->
+      <section class="card" data-card="freq">
+        <header class="card-h"><span class="idx">05</span><h2>Most used</h2><span class="meta" id="freqCount"></span>
+          <button class="exp" aria-label="Expand"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        </header>
+        <div class="card-b flush"><ol class="ranked" id="frequent"></ol></div>
+      </section>
+
+      <!-- 06 Week -->
+      <section class="card" data-card="week">
+        <header class="card-h"><span class="idx">06</span><h2>Your week</h2><span class="meta" id="peak"></span></header>
+        <div class="card-b week-b">
+          <div class="heat" id="heat"></div>
+          <div class="heat-axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+        </div>
+      </section>
+
+      <!-- 07 To-do (butter) -->
+      <section class="card" data-card="todo">
+        <header class="card-h"><span class="idx">07</span><h2>To-do</h2><span class="meta" id="todoCount"></span>
+          <button class="exp" aria-label="Expand"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        </header>
+        <div class="card-b">
+          <form id="todoForm" class="todo-form"><input id="todoInput" placeholder="Add a task, press Enter"></form>
+          <ul class="todos" id="todos"></ul>
+        </div>
+      </section>
+
+      <!-- 08 Workspaces (sky) -->
+      <section class="card" data-card="ws">
+        <header class="card-h"><span class="idx">08</span><h2>Workspaces</h2>
+          <span class="tools-r"><button class="btn sm dark fx" id="saveWsBtn">Save window</button></span>
+          <button class="exp" aria-label="Expand"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        </header>
+        <div class="card-b ws-b">
+          <form class="ws-form" id="wsForm" hidden><input id="wsName" placeholder="Name it, e.g. University admin"></form>
+          <ul class="ws" id="wsList"></ul>
+        </div>
+      </section>
+
+      <!-- 09 Scratchpad -->
+      <section class="card" data-card="notes">
+        <header class="card-h"><span class="idx">09</span><h2>Scratchpad</h2><span class="meta" id="savedTag">saved</span>
+          <button class="exp" aria-label="Expand"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        </header>
+        <div class="card-b notes-b"><textarea id="notes" placeholder="Links, numbers, half-thoughts. Saves as you type."></textarea></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ Floating dock ============ -->
+  <div class="dock-wrap"><nav class="dock" id="dock" aria-label="Tools"></nav></div>
+
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ============ Command palette ============ -->
+  <div class="palette" id="palette" hidden>
+    <div class="palette-box" role="dialog" aria-label="Command palette">
+      <div class="palette-input">
+        <svg viewBox="0 0 24 24" width="17" height="17"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m21 21-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/></svg>
+        <input id="pq" autocomplete="off" spellcheck="false" placeholder="Tools, tabs, history, or type “todo: …”">
+        <kbd>Esc</kbd>
+      </div>
+      <ul class="results palette-results" id="paletteResults" role="listbox"></ul>
+      <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>Enter</kbd> open</span><span><kbd>Ctrl</kbd>+<kbd>Enter</kbd> new tab</span></div>
+    </div>
+  </div>
+
+  <!-- ============ Animated modal: add tool ============ -->
+  <div class="modal-wrap" id="modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-label="Add a tool">
+      <div class="modal-hero" id="modalTiles"></div>
+      <form id="toolForm">
+        <h3>Add a tool to your dock</h3>
+        <label>URL<input id="tUrl" required placeholder="app.clickup.com"></label>
+        <label>Name<input id="tName" placeholder="Auto from the URL"></label>
+        <label>Category<select id="tCat"></select></label>
+        <div class="row">
+          <button type="button" class="btn fx" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn primary fx">Add to dock</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
