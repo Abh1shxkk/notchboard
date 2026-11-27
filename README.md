@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="store/logo-300.png" width="96" height="96" alt="Dashing New Tab logo">
+  <img src="store/logo-300.png" width="96" height="96" alt="Notchboard logo">
 </p>
 
-<h1 align="center">Dashing New Tab</h1>
-<h3 align="center">Dashboard, Tab Manager &amp; Focus Timer</h3>
+<h1 align="center">Notchboard</h1>
+<h3 align="center">New Tab Dashboard, Tab Manager &amp; Focus Timer</h3>
 
 <p align="center">
   A one-screen bento dashboard for your new tab: your tools, open tabs, focus timer and to-dos, built from your own browsing.<br>
@@ -17,7 +17,7 @@
   <img alt="Privacy: local only" src="https://img.shields.io/badge/data-local%20only-f4c84f">
 </p>
 
-![Dashing New Tab, light theme](store/screenshot-light.png)
+![Notchboard, light theme](store/screenshot-light.png)
 
 ## Screenshots
 

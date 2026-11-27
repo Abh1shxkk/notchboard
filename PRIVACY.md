@@ -1,12 +1,12 @@
-# Privacy Policy: Dashing New Tab: Dashboard, Tab Manager & Focus Timer
+# Privacy Policy: Notchboard: New Tab Dashboard, Tab Manager & Focus Timer
 
 _Last updated: November 27, 2026_
 
-Dashing New Tab replaces Chrome's new tab page with a personal dashboard. This policy explains what data it uses and what it does with it.
+Notchboard replaces Chrome's new tab page with a personal dashboard. This policy explains what data it uses and what it does with it.
 
 ## Summary
 
-**Dashing New Tab does not collect, transmit, sell or share any data.** Everything it reads stays inside your browser. The extension makes no network requests to any server owned by the developer or by third parties, and it contains no analytics, ads or tracking.
+**Notchboard does not collect, transmit, sell or share any data.** Everything it reads stays inside your browser. The extension makes no network requests to any server owned by the developer or by third parties, and it contains no analytics, ads or tracking.
 
 ## Data the extension reads, and why
 
@@ -46,4 +46,4 @@ If this policy changes, the updated version will be published at this address wi
 
 ## Contact
 
-Questions about this policy can be raised as an issue on the project's GitHub repository: https://github.com/Abh1shxkk/dashing-new-tab/issues
+Questions about this policy can be raised as an issue on the project's GitHub repository: https://github.com/Abh1shxkk/notchboard/issues

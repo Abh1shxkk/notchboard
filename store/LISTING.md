@@ -1,7 +1,7 @@
 # Chrome Web Store listing: copy-paste fields
 
 ## Name
-Dashing New Tab: Dashboard, Tab Manager & Focus Timer
+Notchboard: New Tab Dashboard, Tab Manager & Focus Timer
 
 ## Summary (max 132 characters)
 One-screen new tab dashboard with a tool dock, tab manager, focus timer, to-dos and history stats. Private: local data only.
@@ -13,7 +13,7 @@ Productivity → Workflow & Planning
 English
 
 ## Description
-Dashing New Tab turns every new tab into a one-screen command center built from the sites you actually use. No accounts, no setup, no data leaving your browser.
+Notchboard turns every new tab into a one-screen command center built from the sites you actually use. No accounts, no setup, no data leaving your browser.
 
 WHAT YOU GET
 • A macOS-style dock of your tools. If a tool is already open, clicking it jumps to that tab instead of opening a duplicate.
@@ -53,7 +53,7 @@ No, I am not using remote code.
 The extension reads web history and tab URLs **only on the device** and never transmits them. If the form asks which data types are handled, select **Web history**, then certify that the data is **not sold**, **not transferred to third parties**, **not used for unrelated purposes**, and **not used for creditworthiness or lending**. Check the current wording of the Chrome Web Store user-data FAQ when you fill this in, since the form changes from time to time.
 
 ## Privacy policy URL
-https://github.com/Abh1shxkk/dashing-new-tab/blob/main/PRIVACY.md
+https://github.com/Abh1shxkk/notchboard/blob/main/PRIVACY.md
 
 ## Assets
 - Store icon: `icon.png` (128×128)

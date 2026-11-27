@@ -1,4 +1,4 @@
-// Dashing New Tab v3. Everything comes from local Chrome APIs; nothing is sent anywhere.
+// Notchboard v3. Everything comes from local Chrome APIs; nothing is sent anywhere.
 'use strict';
 const VERSION = '3.0.1';
 const $ = (s, r = document) => r.querySelector(s);

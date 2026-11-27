@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Dashing New Tab: Dashboard, Tab Manager & Focus Timer",
-  "short_name": "Dashing Tab",
+  "name": "Notchboard: New Tab Dashboard, Tab Manager & Focus Timer",
+  "short_name": "Notchboard",
   "version": "3.0.1",
   "description": "One-screen new tab dashboard with a tool dock, tab manager, focus timer, to-dos and history stats. Private: local data only.",
   "chrome_url_overrides": {
