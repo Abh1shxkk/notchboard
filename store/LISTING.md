@@ -1,10 +1,10 @@
 # Chrome Web Store listing: copy-paste fields
 
 ## Name
-Dashing New Tab
+Dashing New Tab: Dashboard, Tab Manager & Focus Timer
 
 ## Summary (max 132 characters)
-A calm, one-screen bento dashboard for your new tab: your tools, open tabs, focus timer and to-dos, built from your own browsing.
+One-screen new tab dashboard with a tool dock, tab manager, focus timer, to-dos and history stats. Private: local data only.
 
 ## Category
 Productivity → Workflow & Planning

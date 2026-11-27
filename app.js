@@ -1,6 +1,6 @@
 // Dashing New Tab v3. Everything comes from local Chrome APIs; nothing is sent anywhere.
 'use strict';
-const VERSION = '3.0.0';
+const VERSION = '3.0.1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const DAY = 864e5;

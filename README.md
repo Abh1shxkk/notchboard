@@ -3,6 +3,7 @@
 </p>
 
 <h1 align="center">Dashing New Tab</h1>
+<h3 align="center">Dashboard, Tab Manager &amp; Focus Timer</h3>
 
 <p align="center">
   A one-screen bento dashboard for your new tab: your tools, open tabs, focus timer and to-dos, built from your own browsing.<br>

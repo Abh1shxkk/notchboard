@@ -1,4 +1,4 @@
-# Privacy Policy: Dashing New Tab
+# Privacy Policy: Dashing New Tab: Dashboard, Tab Manager & Focus Timer
 
 _Last updated: November 27, 2026_
 
