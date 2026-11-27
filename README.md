@@ -1,6 +1,30 @@
-# Dashing New Tab
+<p align="center">
+  <img src="store/logo-300.png" width="96" height="96" alt="Dashing New Tab logo">
+</p>
 
-A Chrome extension that replaces the new tab page with a one-screen bento dashboard built from your own browsing: the tools you use most, your open tabs, a focus timer and a few quiet productivity helpers. Everything is read from local Chrome APIs. Nothing is sent anywhere.
+<h1 align="center">Dashing New Tab</h1>
+
+<p align="center">
+  A one-screen bento dashboard for your new tab: your tools, open tabs, focus timer and to-dos, built from your own browsing.<br>
+  Local data only. No accounts, no tracking, no network requests.
+</p>
+
+<p align="center">
+  <img alt="Manifest V3" src="https://img.shields.io/badge/Manifest-V3-ff5b1f">
+  <img alt="Chrome and Edge" src="https://img.shields.io/badge/Chrome%20%7C%20Edge-supported-151513">
+  <img alt="Edge Add-ons: in review" src="https://img.shields.io/badge/Edge%20Add--ons-in%20review-8cc0a4">
+  <img alt="Privacy: local only" src="https://img.shields.io/badge/data-local%20only-f4c84f">
+</p>
+
+![Dashing New Tab, light theme](store/screenshot-light.png)
+
+## Screenshots
+
+| Dark theme | Daily brief | Command palette |
+|---|---|---|
+| ![Dark theme](store/screenshot-dark.png) | ![Daily brief notch asking to close a duplicate tab](store/feature-brief.png) | ![Command palette searching tools, tabs and history](store/feature-palette.png) |
+
+<sub>Screenshots use generic demo data.</sub>
 
 ## Features
 
